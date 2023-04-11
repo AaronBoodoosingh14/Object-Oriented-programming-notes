@@ -31,4 +31,34 @@ It is often used to provide a developer-friendly representation of an object, as
 
 ```str``` allows us to convert our object to a string 
 
+## Polymorphism and inheritence 
 
+A method that can be used across different classes and object that is dependent on the parameters.
+
+Different Classes (non-inherited) can have the same named methods (Simple) → Polymorphism
+
+Within a set of inherited classes have the same methods
+
+### Example:
+
+```python
+
+class Bear:
+    def sound(self):
+        print("Groarrr")
+ 
+class Dog:
+    def sound(self):
+        print("Woof woof!")
+ 
+def makeSound(animalType):
+    animalType.sound()
+   
+   ```
+ 
+ 
+
+
+
+
+    
