@@ -31,7 +31,7 @@ It is often used to provide a developer-friendly representation of an object, as
 
 ```str``` allows us to convert our object to a string 
 
-## Polymorphism and inheritence 
+## Polymorphism and Overriding  
 
 A method that can be used across different classes and object that is dependent on the parameters.
 
@@ -39,7 +39,11 @@ Different Classes (non-inherited) can have the same named methods (Simple) → P
 
 Within a set of inherited classes have the same methods
 
-### Example:
+We can have Two different classes have a same attributes and methods
+A child of a parent have an overrided method where the child would utilize the method differently.
+These are the two fundamental concepts of overriding and polymorphism in Python
+
+### Examples:
 
 ```python
 
@@ -53,9 +57,29 @@ class Dog:
  
 def makeSound(animalType):
     animalType.sound()
+    
+bearObj = Bear()
+dogObj = Dog()
+ 
+makeSound(bearObj)
+makeSound(dogObj)
    
    ```
+   
+ ```python
  
+ class Dog:
+	def __init__(self,name):
+		self.__name = name
+	
+	def __str__(self):
+		return “Woof, I’m %s.” % self.__name
+
+corgi = Dog(“Tobasco”)
+print(corgi) → “Woof, I’m Tobasco.”
+
+```
+ Overloading is illegal in python, but is still a form of polymorphisim
  
 
 
