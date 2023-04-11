@@ -15,13 +15,13 @@ class Person:
 ```class``` is a keyword in python to create a class
 ```__init__()``` is a base override
 
-##Whats An Object and OOP?
+## Whats An Object and OOP?
 
 In object-oriented programming, an object is an instance of a class that can be a variable, a function, a data structure, or a combination of these. Understanding objects and their properties is essential in both CS and OOP.
 
 Object-Oriented Programming (OOP) is a programming practice that aims to design modular and reusable software systems. It does this by creating objects, which are instances of classes, and provides them with functionality to solve problems. OOP is an approach that focuses on the definition of data rather than the traditional 
 
-##```_repr__``` function
+## ```_repr__``` function
 
 ```__repr__``` is a special method in Python that returns a string representation of an object that can be used to recreate it. 
 
