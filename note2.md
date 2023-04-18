@@ -1,37 +1,114 @@
 
-## More notes: 
-```class``` is a keyword in python to create a class
-```__init__()``` is a base override
 
-## Whats An Object and OOP?
+# Whats An Object and OOP?
 
 In object-oriented programming, an object is an instance of a class that can be a variable, a function, a data structure, or a combination of these. Understanding objects and their properties is essential in both CS and OOP.
 
 Object-Oriented Programming (OOP) is a programming practice that aims to design modular and reusable software systems. It does this by creating objects, which are instances of classes, and provides them with functionality to solve problems. OOP is an approach that focuses on the definition of data rather than the traditional 
 
-## ```__repr__``` and ```__str__``` function
+# New functions:
 
-```__repr__``` is a special method in Python that allows an object to be printable. 
+1. ## self() function
+	- In Python, the first parameter of every method in a class is conventionally named "self" and it refers to the instance of the class on which the method is called. By using "self", methods can access and modify the attributes and methods of the instance it is bound to. Python automatically passes a reference to the object as the first argument when an instance method is called on an object. "self" is not a keyword, but a convention in Python, and changing its name is not recommended as it might cause confusion among developers who are familiar with the convention. This feature is specific to object-oriented programming in Python and not used in other programming paradigms.
+ 
 
-It is often used to provide a developer-friendly representation of an object, as opposed to the default string representation provided by ```__str__```.
+		- ```python
+			class Car:
+				def __init__(self, make, model, year):
+					self.make = make
+					self.model = model
+					self.year = year
+					self.mileage = 0
 
-```__repr__``` is automatically called when an object is passed to the built-in repr() function, or when it is printed using the ```print()``` function.
+2. ## ```__str__``` and ```__repr__```
+	
+	- In Python, the __str__ and __repr__ functions are used to define how an object should be represented as a string. The __str__ method returns a readable string representation of an object, while the __repr__ method returns a string representation of an object that can be used to recreate the object. When you print an object, Python calls the __str__ method to get a string representation of the object. If the __str__ method is not defined, Python falls back to calling the __repr__ method. It's a good practice to define both methods for your classes, but if you have to choose only one, it's usually better to define the __repr__ method, as it provides a more complete representation of the object.
+		
+		- ```python
+			class Person:
+			    def __init__(self, name, age):
+				self.name = name
+				self.age = age
 
-```__str__``` allows us to convert our object to a string 
+			    def __str__(self):
+				return f"{self.name} is {self.age} years old"
 
-## Polymorphism and Overriding  
+			    def __repr__(self):
+				return f"Person('{self.name}', {self.age})"
 
-* A method that can be used across different classes and object that is dependent on the parameters.
+			p = Person("Aaron B", 30)
+			print(str(p))     # Output: Aaron B is 16 years old
+			print(repr(p))    # Output: Person('Aaron', 16)
+  
+3. ## ```__init__```
+	
+	- In Python, the __init__ method is a special method that is called automatically when an object of a class is created. It is used to initialize the instance variables of an object with values passed as arguments to the constructor. The __init__ method is also called a constructor method, as it constructs and initializes the object. It takes self as the first argument, which refers to the object being created. It can take any number of additional arguments, which are used to initialize the instance variables of the object. By defining the __init__ method, you can customize the initialization process of your objects and ensure that they start with the correct initial values.
+	 	
+		- ```python 
+		 	class Dog:
+			    def __init__(self, name, breed):
+				self.name = name
+				self.breed = breed
 
-* Different Classes (non-inherited) can have the same named methods (Simple) → Polymorphism
+			    def bark(self):
+				print(f"{self.name} ({self.breed}) is barking!")
 
-* Within a set of inherited classes have the same methods
+			my_dog = Dog("Dixie", "Labrador Retriever")
+			my_dog.bark()  # Output: Fido (Labrador Retriever) is barking!
 
-We can have Two different classes have a same attributes and methods
-A child of a parent have an overrided method where the child would utilize the method differently.
-These are the two fundamental concepts of overriding and polymorphism in Python
+			```
+## Overriding
 
-### Examples:
+- Overriding is a concept in object-oriented programming that allows a subclass to provide its own implementation of a method that is already defined in its superclass.
+
+- This means that the subclass method "overrides" the superclass method, and when the method is called on an instance of the subclass, the subclass implementation is used instead of the superclass implementation.
+
+- To override a method in Python, you simply define a method with the same name in the subclass as the method you want to override in the superclass.
+
+- When the method is called on an instance of the subclass, Python will automatically use the subclass implementation of the method, rather than the superclass implementation.
+
+- Overriding is useful when you want to customize the behavior of a method for a specific subclass, while still inheriting the rest of the behavior from the superclass.
+
+- Two methods with the same method name and parameters
+
+### Example of overriding
+```python
+class Vehicle:
+    def __init__(self, color):
+        self.color = color
+
+    def start_engine(self):
+        print("Starting engine...")
+
+class Car(Vehicle):
+    def start_engine(self):
+        print("Insert key, turn ignition...")
+
+class Motorcycle(Vehicle):
+    def start_engine(self):
+        print("Pull clutch lever, press start button...")
+
+my_vehicle = Vehicle("blue")
+my_car = Car("red")
+my_motorcycle = Motorcycle("green")
+
+my_vehicle.start_engine()  # Output: Starting engine...
+my_car.start_engine()      # Output: Insert key, turn ignition...
+my_motorcycle.start_engine()  # Output: Pull clutch lever, press start button...
+
+```
+
+## Polymorphism 
+
+- Polymorphism is a concept in object-oriented programming that allows objects of different classes to be treated as if they were of the same class.
+- Polymorphism allows you to write code that can work with objects of different classes, as long as they implement the same methods or have the same attributes.
+- Polymorphism is achieved through inheritance and method overriding, where a subclass can provide its own implementation of a method that is already defined in its superclass.
+- Polymorphism makes code more flexible and reusable, by allowing you to write generic code that can work with many different types of objects, rather than having to write specialized code for each type.
+- Polymorphism is a key feature of many object-oriented programming languages, including Python, and is used extensively in libraries and frameworks to provide generic solutions that can be customized for specific use cases.
+
+## Encapsulation
+
+ 
 
 ```python
 
@@ -54,17 +131,7 @@ makeSound(dogObj)
    
    ```
    
- ```python
- 
- class Dog:
-	def __init__(self,name):
-		self.__name = name
-	
-	def __str__(self):
-		return “Woof, I’m %s.” % self.__name
-
-corgi = Dog(“Tobasco”)
-print(corgi) → “Woof, I’m Tobasco.”
+ ```p
 
 ```
  Overloading is illegal in python, but is still a form of polymorphisim
