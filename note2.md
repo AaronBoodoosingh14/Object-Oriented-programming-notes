@@ -57,6 +57,14 @@ Object-Oriented Programming (OOP) is a programming practice that aims to design 
 			my_dog.bark()  # Output: Fido (Labrador Retriever) is barking!
 
 			```
+4. ## super()
+- ```super()``` is a built-in function in Python used to refer to the parent class of a derived class.
+- It allows the derived class to access methods and properties of the parent class, and can be used to call its methods.
+- ```super()``` takes two arguments: the first is the class that we want to refer to, and the second is the instance of the class.
+- By using ```super()```, we can avoid hardcoding the parent class name in the derived class and make the code more flexible and maintainable.
+```super()``` is commonly used in method overriding, where we want to customize the behavior of a method from the parent class.
+- We can also use ```super()``` to call the constructor of the parent class in the derived class, using ```super().__init__()``` syntax.
+
 ## Overriding
 
 - Overriding is a concept in object-oriented programming that allows a subclass to provide its own implementation of a method that is already defined in its superclass.
@@ -108,7 +116,14 @@ my_motorcycle.start_engine()  # Output: Pull clutch lever, press start button...
 
 ## Encapsulation
 
+- Its purpose is to hide the implementation details of a class from its users, while providing a clean and consistent interface for interacting with the class.
+- Access modifiers such as public, private, and protected are used to control the visibility of class members.
+- Encapsulation helps to promote data integrity and maintainability by providing a clear separation between the implementation details of a class and its external interface.
+- Encapsulation is a key principle of object-oriented programming.
+- It's prefix is __
  
+ ### Why use encapsulation? 
+ Encapsulation is used for data protection, restricting certain mathoeds to be callable
 
 ```python
 
@@ -136,6 +151,66 @@ makeSound(dogObj)
 ```
  Overloading is illegal in python, but is still a form of polymorphisim
  
+ ## Inheritance
+ 
+- Inheritance is a fundamental concept in object-oriented programming that allows creating new classes based on existing classes.
+- The new class is called a child class (or derived class), and the existing class is called the parent class (or base class).
+- The child class inherits all the properties and methods of the parent class, and can also add new ones or override existing ones.
+- Inheritance provides a way to reuse code and avoid duplication, as well as to organize and modularize code into smaller, more manageable units.
+- In Python, we can define a child class by specifying the parent class name in parentheses after the child class name in the class definition.
+- Child classes can access parent class methods and properties using the ```super()``` function or by directly calling them using the parent class name.
+- Multiple inheritance is a feature that allows a class to inherit from multiple parent classes, and is supported in Python by specifying multiple parent class names in parentheses after the child class name.
+
+## Types of Inheritance
+
+![image](https://user-images.githubusercontent.com/129182651/232961614-748c64f8-d1f9-4852-87f3-9d1f57f12b58.png)
+
+### Examples of Multi-generational
+
+```python
+class Grandparent:
+    def grandparent_method(self):
+        print("This is a method of the Grandparent class")
+
+class Parent(Grandparent):
+    def parent_method(self):
+        print("This is a method of the Parent class")
+
+class Child(Parent):
+    def child_method(self):
+        print("This is a method of the Child class")
+
+class Grandchild(Child):
+    def grandchild_method(self):
+        print("This is a method of the Grandchild class")
+
+gc = Grandchild()
+gc.grandchild_method() # This is a method of the Grandchild class
+gc.child_method() # This is a method of the Child class
+gc.parent_method() # This is a method of the Parent class
+gc.grandparent_method() # This is a method of the Grandparent class
+
+``` 
+### Example of Multi-parent
+
+```python
+class Parent1:
+    def method1(self):
+        print("This is a method of Parent1 class")
+
+class Parent2:
+    def method2(self):
+        print("This is a method of Parent2 class")
+
+class Child(Parent1, Parent2):
+    def child_method(self):
+        print("This is a method of Child class")
+
+c = Child()
+c.method1() # This is a method of Parent1 class
+c.method2() # This is a method of Parent2 class
+c.child_method() # This is a method of Child class
+```
 
 
 
