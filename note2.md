@@ -125,14 +125,13 @@ class MyRange:
             return value
         else:
             raise StopIteration 
-```
 
 # Create an instance of MyRange and iterate over its values
 my_range = MyRange(1, 5)
 for num in my_range:
     print(num)
 
-
+```
 
 ## Overriding
 
@@ -205,23 +204,22 @@ my_motorcycle.start_engine()  # Output: Pull clutch lever, press start button...
 
 ```python
 
-class Bear:
-    def sound(self):
-        print("Groarrr")
- 
-class Dog:
-    def sound(self):
-        print("Woof woof!")
- 
-def makeSound(animalType):
-    animalType.sound()
-    
-bearObj = Bear()
-dogObj = Dog()
- 
-makeSound(bearObj)
-makeSound(dogObj)
-   
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def get_balance(self):
+        return self.__balance
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if self.__balance >= amount:
+            self.__balance -= amount
+            return True
+        else:
+            return False  
    ```
 
  ## Inheritance
