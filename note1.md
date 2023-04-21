@@ -191,6 +191,40 @@ my_motorcycle.start_engine()  # Output: Pull clutch lever, press start button...
 - Polymorphism makes code more flexible and reusable, by allowing you to write generic code that can work with many different types of objects, rather than having to write specialized code for each type.
 - Polymorphism is a key feature of many object-oriented programming languages, including Python, and is used extensively in libraries and frameworks to provide generic solutions that can be customized for specific use cases.
 - Poly = Many, morphism= forms
+
+### Example: 
+```python
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def make_sound(self):
+        pass
+
+class Dog(Animal):
+    def make_sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def make_sound(self):
+        return "Meow!"
+
+class Monkey(Animal):
+    def make_sound(self):
+        return "monkey noise!"
+
+def animal_sounds(animals):
+    for animal in animals:
+        print(animal.name + ": " + animal.make_sound())
+
+dog = Dog("Dixie")
+cat = Cat("fluffy")
+monkey = Monkey("Toe")
+
+animal_sounds([dog, cat, cow])
+```
+
 ## Encapsulation
 
 - Its purpose is to hide the implementation details of a class from its users, while providing a clean and consistent interface for interacting with the class.
